@@ -1,4 +1,10 @@
 export const STRENGTH_COLORS = {
+  "Very Weak": {
+    bg: "bg-red-500",
+    text: "text-white",
+    ring: "focus:ring-red-400",
+    glow: "0 0 20px rgba(239, 68, 68, 0.3)",
+  },
   Weak: {
     bg: "bg-red-500",
     text: "text-white",
@@ -16,6 +22,24 @@ export const STRENGTH_COLORS = {
     text: "text-white",
     ring: "focus:ring-blue-500",
     glow: "0 0 20px rgba(59, 130, 246, 0.3)",
+  },
+  "Very Strong": {
+    bg: "bg-blue-600",
+    text: "text-white",
+    ring: "focus:ring-blue-500",
+    glow: "0 0 20px rgba(59, 130, 246, 0.3)",
+  },
+  Elite: {
+    bg: "bg-purple-500",
+    text: "text-white",
+    ring: "focus:ring-purple-500",
+    glow: "0 0 20px rgba(192, 38, 211, 0.3)",
+  },
+  Unbreakable: {
+    bg: "bg-purple-500",
+    text: "text-white",
+    ring: "focus:ring-purple-500",
+    glow: "0 0 20px rgba(192, 38, 211, 0.3)",
   },
 };
 

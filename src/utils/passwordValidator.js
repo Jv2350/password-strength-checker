@@ -10,13 +10,14 @@ export const validatePassword = (password) => {
 export const getStrengthColor = (level, isEmpty = false) => {
   if (isEmpty) return "focus:ring-blue-300";
 
-  const colors = {
-    Weak: "focus:ring-red-400",
-    Medium: "focus:ring-yellow-400",
-    Strong: "focus:ring-blue-500",
-  };
+  const normalized = level ? level.toLowerCase() : "";
+  if (normalized.includes("weak")) return "focus:ring-red-400";
+  if (normalized.includes("medium")) return "focus:ring-yellow-400";
+  if (normalized.includes("strong")) return "focus:ring-blue-500";
+  if (normalized.includes("elite") || normalized.includes("unbreakable"))
+    return "focus:ring-purple-500";
 
-  return colors[level] || "focus:ring-blue-300";
+  return "focus:ring-blue-300";
 };
 
 export const getStrengthSegmentColor = (
@@ -26,12 +27,21 @@ export const getStrengthSegmentColor = (
 ) => {
   if (isEmpty) return "bg-gray-200";
 
-  if (segment === "Weak" && currentLevel === "Weak")
+  const segNorm = segment.toLowerCase();
+  const curNorm = currentLevel ? currentLevel.toLowerCase() : "";
+
+  // match based on inclusion rather than exact equality
+  if (segNorm.includes("weak") && curNorm.includes("weak"))
     return "bg-red-500 text-white";
-  if (segment === "Medium" && currentLevel === "Medium")
+  if (segNorm.includes("medium") && curNorm.includes("medium"))
     return "bg-yellow-400 text-black";
-  if (segment === "Strong" && currentLevel === "Strong")
+  if (segNorm.includes("strong") && curNorm.includes("strong"))
     return "bg-blue-600 text-white";
+  if (
+    (segNorm.includes("elite") || segNorm.includes("unbreakable")) &&
+    (curNorm.includes("elite") || curNorm.includes("unbreakable"))
+  )
+    return "bg-purple-500 text-white";
 
   return "bg-gray-200 text-gray-400";
 };
