@@ -1,34 +1,29 @@
 import { motion } from "framer-motion";
-import { getStrengthSegmentColor } from "../utils/passwordValidator";
+import { STRENGTH_COLORS, EMPTY_STATE } from "../constants/colors";
 
 export const StrengthSegments = ({ data }) => {
-  const segments = ["Weak", "Medium", "Strong"];
   const isEmpty = !data;
+  const level = data?.level || "";
+  const entropy = data?.entropy || 0;
+
+  // percent bar based on entropy, cap at 100
+  const percent = isEmpty ? 0 : Math.min(100, (entropy / 60) * 100);
+
+  // choose colors from constants or fallback
+  const colors = isEmpty
+    ? EMPTY_STATE
+    : STRENGTH_COLORS[level] || STRENGTH_COLORS.Weak;
 
   return (
-    <div className="grid grid-cols-3 gap-1.5 mt-2">
-      {segments.map((s, idx) => (
-        <motion.div
-          key={s}
-          initial={{ opacity: 0, y: -10 }}
-          animate={{
-            opacity: 1,
-            y: 0,
-            scale: data?.level === s ? 1.05 : 1,
-            boxShadow:
-              data?.level === s ? "0 8px 16px rgba(0,0,0,0.1)" : "none",
-          }}
-          transition={{ delay: idx * 0.1, duration: 0.3 }}
-          whileHover={{ y: -2 }}
-          className={`h-9 flex items-center justify-center font-semibold text-sm rounded cursor-default select-none ${getStrengthSegmentColor(
-            s,
-            data?.level,
-            isEmpty,
-          )} transition-all duration-300`}
-        >
-          {s}
-        </motion.div>
-      ))}
+    <div className="w-full bg-gray-200 rounded-full h-6 mt-2 overflow-hidden">
+      <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: `${percent}%` }}
+        transition={{ duration: 0.3 }}
+        className={`${colors.bg} h-full flex items-center justify-center text-xs font-semibold ${colors.text}`}
+      >
+        {isEmpty ? "" : level}
+      </motion.div>
     </div>
   );
 };

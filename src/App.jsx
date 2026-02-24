@@ -15,12 +15,12 @@ export default function App() {
   const { data, loading } = usePasswordAnalysis(password);
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
-      {/* Header & Hero */}
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-gray-50 to-gray-100">
+      {/* Header & Hero (fixed height) */}
       <Header />
 
-      {/* Main Content - Scrollable */}
-      <main className="flex-1 max-w-2xl w-full mx-auto bg-white shadow-sm rounded-t-2xl p-3 overflow-y-auto">
+      {/* Main Content */}
+      <main className="max-w-2xl w-full mx-auto bg-white shadow-sm rounded-t-2xl p-4 mt-2">
         <h2 className="text-base font-semibold">Take the Password Test</h2>
 
         <p className="text-xs text-gray-500 mt-0.5 mb-2">
@@ -56,7 +56,7 @@ export default function App() {
         <PasswordGenerator />
 
         {/* Privacy Notice */}
-        <p className="mt-3 text-xs text-center text-gray-400">
+        <p className="mt-4 text-xs text-center text-gray-400">
           Your passwords are never stored. Even if they were, we have no idea
           who you are!
         </p>

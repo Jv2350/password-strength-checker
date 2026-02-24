@@ -1,4 +1,9 @@
 import { motion } from "framer-motion";
+import {
+  FaExclamationTriangle,
+  FaRegStar,
+  FaCheckCircle,
+} from "react-icons/fa";
 
 export const Review = ({ data }) => {
   if (!data) return null;
@@ -12,7 +17,13 @@ export const Review = ({ data }) => {
     >
       <div className="flex gap-2 items-start">
         <span className="text-lg mt-1">
-          {data.level === "Weak" ? "⚠️" : data.level === "Medium" ? "✨" : "🎉"}
+          {data.level && data.level.toLowerCase().includes("weak") ? (
+            <FaExclamationTriangle />
+          ) : data.level && data.level.toLowerCase().includes("medium") ? (
+            <FaRegStar />
+          ) : (
+            <FaCheckCircle />
+          )}
         </span>
         <p className="text-xs text-gray-700 leading-relaxed">
           {data.breached

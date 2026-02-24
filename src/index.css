@@ -11,13 +11,13 @@ body {
   min-height: 100vh;
 }
 
-/* ✨ Premium Smooth Transitions */
+/* Premium Smooth Transitions */
 input,
 button {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* 🔮 Glow Effect for Strong Password */
+/* Glow Effect for Strong Password */
 @keyframes sofGlow {
   0%,
   100% {
@@ -32,7 +32,7 @@ button {
   animation: sofGlow 2s ease-in-out infinite;
 }
 
-/* 🎯 Ripple Effect on Buttons */
+/* Ripple Effect on Buttons */
 @keyframes ripple {
   0% {
     transform: scale(0);
@@ -63,12 +63,12 @@ button:active::after {
   animation: ripple 0.6s ease-out;
 }
 
-/* 💫 Smooth Input Focus */
+/* Smooth Input Focus */
 input:focus {
   outline: none;
 }
 
-/* ⚡ Strength Indicator Animation */
+/* Strength Indicator Animation */
 @keyframes slideIn {
   from {
     opacity: 0;
@@ -84,7 +84,7 @@ input:focus {
   animation: slideIn 0.3s ease-out forwards;
 }
 
-/* 🌊 Wave Animation for Loading */
+/* Wave Animation for Loading */
 @keyframes wave {
   0%,
   100% {
@@ -99,19 +99,19 @@ input:focus {
   animation: wave 1.5s ease-in-out infinite;
 }
 
-/* 🎨 Apple-style Glass Effect */
+/* Apple-style Glass Effect */
 .glass {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* ✨ Smooth Scroll Behavior */
+/* Smooth Scroll Behavior */
 html {
   scroll-behavior: smooth;
 }
 
-/* 🔄 Rotate Animation for Icons */
+/* Rotate Animation for Icons */
 @keyframes spin-smooth {
   from {
     transform: rotate(0deg);

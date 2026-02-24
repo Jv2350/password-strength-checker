@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 import { validatePassword } from "../utils/passwordValidator";
+import { FaHashtag, FaAsterisk } from "react-icons/fa6";
+import { RxLetterCaseLowercase, RxLetterCaseUppercase } from "react-icons/rx";
 
 export const PasswordIndicators = ({ password }) => {
   const { hasLower, hasUpper, hasNumber, hasSymbol } =
     validatePassword(password);
 
   const indicators = [
-    { icon: "🔤", label: "Lower case", check: hasLower },
-    { icon: "🔠", label: "Upper case", check: hasUpper },
-    { icon: "🔢", label: "Numbers", check: hasNumber },
-    { icon: "⚡", label: "Symbols", check: hasSymbol },
+    { icon: <RxLetterCaseLowercase />, label: "Lower case", check: hasLower },
+    { icon: <RxLetterCaseUppercase />, label: "Upper case", check: hasUpper },
+    { icon: <FaHashtag />, label: "Numbers", check: hasNumber },
+    { icon: <FaAsterisk />, label: "Symbols", check: hasSymbol },
   ];
 
   return (
